@@ -1,60 +1,65 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import {
   useDeleteTransaction,
-  useTransaction,
-} from "../src/transaction/transaction.controller";
+  useGetTransactions,
+} from "../api/transaction/transaction.controller";
+import TransactionFilterContext from "../contexts/TransactionFilterContext";
 
 const TableStyled = styled.div``;
 
 const Table = () => {
-  const [searchValue, setSearchValue] = useState<string>("");
+  const { searchValue } = useContext(TransactionFilterContext);
 
-  const { data, isLoading, error } = useTransaction();
+  const { data: transactions, isLoading, error } = useGetTransactions();
 
   const { mutate } = useDeleteTransaction();
 
   if (error) return <div>'An error has occurred: ' + error</div>;
-  if (isLoading || !data) return <div>'Loading...'</div>;
+  if (isLoading || !transactions) return <div>'Loading...'</div>;
 
-  // const filteredTransactions = data.filter(i => i.beneficiary.includes(searchValue));
-  const filteredTransactions = data;
+  let filteredTransactions = transactions;
+  if (searchValue) {
+    filteredTransactions = transactions.filter((i) =>
+      i.beneficiary?.includes(searchValue)
+    );
+  }
 
-  const handleFiltering = (e: React.FormEvent<HTMLInputElement>) => {
-    setSearchValue(e.currentTarget.value);
-  };
   const handleTransactionDelete = (id: number) => {
     mutate(id);
-    console.log("deleted id: ", id);
   };
   return (
     <TableStyled>
       <table>
-        <tr>
-          <th>Amount</th>
-          <th>Description</th>
-          <th>
-            Beneficiary
-            <input onChange={handleFiltering} />
-          </th>
-          <th>Options</th>
-        </tr>
-        {filteredTransactions?.length > 0 ? (
-          filteredTransactions.map((item) => (
-            <tr key={item.id}>
-              <td>{item?.amount}</td>
-              <td>{item?.description}</td>
-              <td>{item?.beneficiary}</td>
-              <td>
-                <button onClick={() => handleTransactionDelete(item.id)}>
-                  Delete
-                </button>
-              </td>
-            </tr>
-          ))
-        ) : (
-          <div>No results found</div>
-        )}
+        <thead>
+          <tr>
+            <th>Amount</th>
+            <th>Description</th>
+            <th>
+              Beneficiary
+              {/*<input onChange={handleFiltering} />*/}
+            </th>
+            <th>Options</th>
+          </tr>
+        </thead>
+        <tbody>
+          {filteredTransactions?.length > 0 ? (
+            filteredTransactions.map((item) => (
+              <tr key={item.id}>
+                <td>{item?.amount}</td>
+                <td>{item?.description}</td>
+                <td>{item?.beneficiary}</td>
+                <td>
+                  <button onClick={() => handleTransactionDelete(item.id)}>
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))
+          ) : (
+            <div>No results found</div>
+          )}
+        </tbody>
       </table>
     </TableStyled>
   );

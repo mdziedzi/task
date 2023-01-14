@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
-import { useCreateTransaction } from "../src/transaction/transaction.controller";
+import { useCreateTransaction } from "../api/transaction/transaction.controller";
 
 const FromStyled = styled.form`
   border: 1px solid #000;
@@ -27,7 +27,12 @@ const Form = () => {
 
   return (
     <FromStyled onSubmit={handleSubmit(onSubmit)}>
-      <FormInputStyled placeholder={"amount"} {...register("amount")} />
+      <FormInputStyled
+        placeholder={"amount"}
+        {...register("amount", {
+          valueAsNumber: true,
+        })}
+      />
       <FormInputStyled
         placeholder={"account number"}
         {...register("accountNumber")}

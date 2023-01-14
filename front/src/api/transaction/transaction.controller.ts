@@ -4,7 +4,7 @@ import TransactionDto from "../../../_types/_dto/Transaction.dto";
 
 const TRANSACTIONS_CACHE_KEY = "transactions";
 
-export const useTransaction = () => {
+export const useGetTransactions = () => {
   return useQuery({
     queryKey: TRANSACTIONS_CACHE_KEY,
     queryFn: () => api.getTransactions(),

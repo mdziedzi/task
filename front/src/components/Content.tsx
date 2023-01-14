@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Table from "./Table";
 import Form from "./Form";
+import AccountSummary from "./AccountSummary";
+import TransactionFilterContext from "../contexts/TransactionFilterContext";
 
 const ContentStyled = styled.div`
   flex: 1;
@@ -26,22 +28,23 @@ const TableContainer = styled.div`
   border: 1px solid #000;
 `;
 
-const UserSettings = styled.div`
-  border: 1px solid #000;
-  flex: 1;
-`;
-
 function Content() {
+  const [searchValue, setSearchValue] = useState<string>("");
+
   return (
     <ContentStyled>
       <ContentContainerStyled>
-        <UserInputContainerStyled>
-          <UserSettings>UserSettings</UserSettings>
-          <Form />
-        </UserInputContainerStyled>
-        <TableContainer>
-          <Table />
-        </TableContainer>
+        <TransactionFilterContext.Provider
+          value={{ searchValue, setSearchValue }}
+        >
+          <UserInputContainerStyled>
+            <AccountSummary />
+            <Form />
+          </UserInputContainerStyled>
+          <TableContainer>
+            <Table />
+          </TableContainer>
+        </TransactionFilterContext.Provider>
       </ContentContainerStyled>
     </ContentStyled>
   );

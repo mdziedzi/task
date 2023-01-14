@@ -1,5 +1,5 @@
-import React, {ReactNode} from 'react';
-import styled from "styled-components";
+import React, {PropsWithChildren} from 'react';
+import styled from 'styled-components';
 
 const LayoutStyled = styled.main`
   display: flex;
@@ -8,10 +8,9 @@ const LayoutStyled = styled.main`
 `;
 
 interface LayoutProps {
-    children: ReactNode;
 }
 
-const Layout = ({children}: LayoutProps) => {
+const Layout = ({children}: PropsWithChildren<LayoutProps>) => {
 
     return (
         <LayoutStyled>

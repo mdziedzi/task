@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components'
-import Table from "./Table";
+import Table from './Table';
+import Form from './Form';
 
 const ContentStyled = styled.div`
   flex: 1;
@@ -29,21 +30,18 @@ const UserSettings = styled.div`
   border: 1px solid #000;
   flex: 1;
 `;
-const TransactionFrom = styled.div`
-  border: 1px solid #000;
-  flex: 1;
-`;
 
 function Content() {
+
     return (
         <ContentStyled>
             <ContentContainerStyled>
                 <UserInputContainerStyled>
                     <UserSettings>UserSettings</UserSettings>
-                    <TransactionFrom>TransactionFrom</TransactionFrom>
+                    <Form />
                 </UserInputContainerStyled>
                 <TableContainer>
-                    <Table/>
+                    <Table />
                 </TableContainer>
             </ContentContainerStyled>
         </ContentStyled>

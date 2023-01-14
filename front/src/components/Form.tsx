@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
-import { useMutation, useQueryClient } from "react-query";
-import * as api from "../transactionsApi";
+import { useCreateTransaction } from "../src/transaction/transaction.controller";
 
 const FromStyled = styled.form`
   border: 1px solid #000;
@@ -16,22 +15,15 @@ const FormInputStyled = styled.input`
   margin-top: 1rem;
 `;
 
-interface FormProps {}
-const Form = ({}: FormProps) => {
-  const { handleSubmit, register, reset } = useForm();
 
-  const queryClient = useQueryClient();
+const Form = () => {
+  const { handleSubmit, register, reset: resetForm } = useForm();
 
-  const { isLoading, mutate } = useMutation(api.addTransaction, {
-    onSuccess: (data) => {
-      queryClient.invalidateQueries("transactions");
-      reset();
-    },
-  });
+  const { mutate } = useCreateTransaction();
 
   const onSubmit = (data: any) => {
-    console.log("submited ", data);
     mutate(data);
+    resetForm();
   };
 
   return (

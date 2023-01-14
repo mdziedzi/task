@@ -1,30 +1,16 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { useMutation, useQuery, useQueryClient } from "react-query";
-import * as api from "../transactionsApi";
-import TransactionsDto from "../../_types/_dto/Transactions.dto";
+import { useDeleteTransaction, useTransaction } from "../src/transaction/transaction.controller";
 
 const TableStyled = styled.div``;
 
-interface TableProps {
-  // searchValue: string;
-}
-
-const Table = ({}: TableProps) => {
+const Table = () => {
   const [searchValue, setSearchValue] = useState<string>("");
 
-  const queryClient = useQueryClient();
 
-  const { data, isLoading, error } = useQuery<TransactionsDto>(
-    "transactions",
-    () => api.getTransactions().then((res) => res.data)
-  );
+  const { data, isLoading, error } = useTransaction();
 
-  const { mutate } = useMutation(api.deleteTransaction, {
-    onSuccess: () => {
-      queryClient.invalidateQueries("transactions");
-    },
-  });
+  const { mutate } = useDeleteTransaction();
 
   if (error) return <div>'An error has occurred: ' + error</div>;
   if (isLoading || !data) return <div>'Loading...'</div>;

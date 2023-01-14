@@ -15,7 +15,6 @@ const FormInputStyled = styled.input`
   margin-top: 1rem;
 `;
 
-
 const Form = () => {
   const { handleSubmit, register, reset: resetForm } = useForm();
 

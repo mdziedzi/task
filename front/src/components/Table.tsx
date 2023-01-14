@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { useDeleteTransaction, useTransaction } from "../src/transaction/transaction.controller";
+import {
+  useDeleteTransaction,
+  useTransaction,
+} from "../src/transaction/transaction.controller";
 
 const TableStyled = styled.div``;
 
 const Table = () => {
   const [searchValue, setSearchValue] = useState<string>("");
-
 
   const { data, isLoading, error } = useTransaction();
 

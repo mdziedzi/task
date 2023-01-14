@@ -7,10 +7,13 @@ enum Endpoints {
 }
 
 const api = axios.create({
-  baseURL: "http://localhost:3000"
+  baseURL: "http://localhost:3000",
 });
 
-export const getTransactions = () => api.get<TransactionsDto>(Endpoints.TRANSACTIONS).then(response => response.data);
+export const getTransactions = () =>
+  api
+    .get<TransactionsDto>(Endpoints.TRANSACTIONS)
+    .then((response) => response.data);
 
 export const createTransaction = (data: TransactionDto) =>
   api.post(Endpoints.TRANSACTIONS, data);

@@ -17,7 +17,6 @@
     "react-query": "^3.39.2",
     "react-scripts": "5.0.1",
     "styled-components": "^5.3.6",
-    "typescript": "^4.9.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -47,6 +46,15 @@
   "devDependencies": {
     "@types/react-query": "^1.2.9",
     "@types/styled-components": "^5.1.26",
-    "prettier": "^2.8.2"
+    "@typescript-eslint/eslint-plugin": "^5.48.1",
+    "eslint": "^8.31.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-config-standard-with-typescript": "^27.0.1",
+    "eslint-plugin-import": "^2.27.4",
+    "eslint-plugin-n": "^15.6.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.32.0",
+    "prettier": "^2.8.2",
+    "typescript": "^4.9.4"
   }
 }

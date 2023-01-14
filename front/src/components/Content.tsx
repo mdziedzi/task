@@ -1,7 +1,7 @@
-import React from 'react';
-import styled from 'styled-components'
-import Table from './Table';
-import Form from './Form';
+import React from "react";
+import styled from "styled-components";
+import Table from "./Table";
+import Form from "./Form";
 
 const ContentStyled = styled.div`
   flex: 1;
@@ -16,13 +16,13 @@ const ContentContainerStyled = styled.div`
 `;
 
 const UserInputContainerStyled = styled.div`
-  background-color: #EEE;
+  background-color: #eee;
   display: flex;
   border: 1px solid #000;
 `;
 
 const TableContainer = styled.div`
-  background-color: #DDD;
+  background-color: #ddd;
   border: 1px solid #000;
 `;
 
@@ -32,20 +32,19 @@ const UserSettings = styled.div`
 `;
 
 function Content() {
-
-    return (
-        <ContentStyled>
-            <ContentContainerStyled>
-                <UserInputContainerStyled>
-                    <UserSettings>UserSettings</UserSettings>
-                    <Form />
-                </UserInputContainerStyled>
-                <TableContainer>
-                    <Table />
-                </TableContainer>
-            </ContentContainerStyled>
-        </ContentStyled>
-    )
+  return (
+    <ContentStyled>
+      <ContentContainerStyled>
+        <UserInputContainerStyled>
+          <UserSettings>UserSettings</UserSettings>
+          <Form />
+        </UserInputContainerStyled>
+        <TableContainer>
+          <Table />
+        </TableContainer>
+      </ContentContainerStyled>
+    </ContentStyled>
+  );
 }
 
 export default Content;

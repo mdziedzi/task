@@ -1,5 +1,5 @@
-import React, {PropsWithChildren} from 'react';
-import styled from 'styled-components';
+import React, { PropsWithChildren } from "react";
+import styled from "styled-components";
 
 const LayoutStyled = styled.main`
   display: flex;
@@ -7,16 +7,10 @@ const LayoutStyled = styled.main`
   height: 100%;
 `;
 
-interface LayoutProps {
-}
+interface LayoutProps {}
 
-const Layout = ({children}: PropsWithChildren<LayoutProps>) => {
-
-    return (
-        <LayoutStyled>
-            {children}
-        </LayoutStyled>
-    )
-}
+const Layout = ({ children }: PropsWithChildren<LayoutProps>) => {
+  return <LayoutStyled>{children}</LayoutStyled>;
+};
 
 export default Layout;

@@ -7,9 +7,7 @@ const LayoutStyled = styled.main`
   height: 100%;
 `;
 
-interface LayoutProps {}
-
-const Layout = ({ children }: PropsWithChildren<LayoutProps>) => {
+const Layout = ({ children }: PropsWithChildren) => {
   return <LayoutStyled>{children}</LayoutStyled>;
 };
 

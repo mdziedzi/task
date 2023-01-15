@@ -15,8 +15,8 @@ const Table = () => {
 
   const { mutate } = useDeleteTransaction();
 
-  if (error) return <div>'An error has occurred: ' + error</div>;
-  if (isLoading || !transactions) return <div>'Loading...'</div>;
+  if (error) return <div>{`An error has occurred: ${error}`}</div>;
+  if (isLoading || !transactions) return <div>Loading...</div>;
 
   let filteredTransactions = transactions;
   if (searchValue) {

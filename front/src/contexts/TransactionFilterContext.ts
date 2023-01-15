@@ -7,6 +7,6 @@ export interface Filter {
 
 const TransactionFilterContext = createContext<Filter>({
   searchValue: "",
-  setSearchValue: () => {},
+  setSearchValue: () => undefined,
 });
 export default TransactionFilterContext;

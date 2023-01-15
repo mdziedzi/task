@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { useForm } from "react-hook-form";
+import { FieldValues, useForm } from "react-hook-form";
 import { useCreateTransaction } from "../api/transaction/transaction.controller";
 import FormInput from "./FormInput";
+import TransactionDto from "../../_types/_dto/Transaction.dto";
 
 const FromStyled = styled.form`
   border: 1px solid #000;
@@ -26,8 +27,8 @@ const Form = () => {
 
   const { mutate } = useCreateTransaction();
 
-  const onSubmit = (data: any) => {
-    mutate(data);
+  const onSubmit = (data: FieldValues) => {
+    mutate(data as TransactionDto);
     resetForm();
   };
 

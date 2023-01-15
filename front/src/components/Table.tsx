@@ -35,10 +35,7 @@ const Table = () => {
           <tr>
             <th>Amount</th>
             <th>Description</th>
-            <th>
-              Beneficiary
-              {/*<input onChange={handleFiltering} />*/}
-            </th>
+            <th>Beneficiary</th>
             <th>Options</th>
           </tr>
         </thead>

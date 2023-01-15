@@ -4,6 +4,8 @@ import TransactionFilterContext from "../contexts/TransactionFilterContext";
 
 const FiltersStyled = styled.div`
   flex: 1;
+  display: flex;
+  align-items: flex-end;
 `;
 const Filters = () => {
   const { setSearchValue } = useContext(TransactionFilterContext);

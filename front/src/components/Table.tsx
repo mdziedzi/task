@@ -28,7 +28,7 @@ const Table = () => {
     fetchNextPage,
     isLoading,
     error,
-  } = useGetTransactionsInfinite();
+  } = useGetTransactionsInfinite(searchValue);
 
   const { mutate } = useDeleteTransaction();
 
@@ -69,7 +69,6 @@ const Table = () => {
         fetching = false;
       }
     };
-    console.log("qqqqqq");
     document.addEventListener("scroll", onScroll);
     return () => {
       document.removeEventListener("scroll", onScroll);
@@ -78,8 +77,6 @@ const Table = () => {
 
   if (error) return <div>{`An error has occurred: ${error}`}</div>;
   if (isLoading || !fetchedData) return <div>Loading...</div>;
-
-  console.log("fethecd data", fetchedData);
 
   const handleTransactionDelete = (id: number) => {
     mutate(id);

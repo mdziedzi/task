@@ -24,7 +24,9 @@ export const deleteTransaction = (id: number) =>
 export const getTransactionsPaginated = ({
   page,
   limit,
+  beneficiary,
 }: PaginationParamsInterface) => {
-  const url = Endpoints.TRANSACTIONS + `?_page=${page}&_limit=${limit}`;
+  let url = Endpoints.TRANSACTIONS + `?_page=${page}&_limit=${limit}`;
+  if (beneficiary) url = url.concat(`&beneficiary_like=${beneficiary}`);
   return api.get<TransactionDto[]>(url).then((response) => response.data);
 };

@@ -39,13 +39,17 @@ export const useCreateTransaction = () => {
   });
 };
 
-export const useGetTransactionsInfinite = () => {
+export const useGetTransactionsInfinite = (searchValue: string) => {
+  console.log("searchval", searchValue);
   return useInfiniteQuery({
-    queryKey: TRANSACTIONS_PAGINATED_CACHE_KEY,
+    queryKey: [TRANSACTIONS_PAGINATED_CACHE_KEY, searchValue],
     queryFn: ({ pageParam = 1 }) =>
-      api.getTransactionsPaginated({ page: pageParam, limit: ITEMS_PER_PAGE }),
+      api.getTransactionsPaginated({
+        page: pageParam,
+        limit: ITEMS_PER_PAGE,
+        beneficiary: searchValue,
+      }),
     getNextPageParam: (lastPage, pages) => {
-      console.log(lastPage, pages);
       return lastPage.length === ITEMS_PER_PAGE ? pages.length + 1 : undefined;
     },
   });

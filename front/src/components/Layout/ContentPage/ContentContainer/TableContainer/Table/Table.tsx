@@ -3,13 +3,9 @@ import styled from "styled-components";
 import {
   useDeleteTransaction,
   useGetTransactionsInfinite,
-} from "../api/transaction/transaction.controller";
-import TransactionFilterContext from "../contexts/TransactionFilterContext";
-
-const TableStyled = styled.div`
-  //max-height: 400px;
-  //overflow: scroll;
-`;
+} from "../../../../../../api/transaction/transaction.controller";
+import TransactionFilterContext from "../../../../../../contexts/TransactionFilterContext";
+import { StyledTable } from "./Table.styled";
 
 const TableElementStyled = styled.table`
   border-collapse: separate;
@@ -82,7 +78,7 @@ const Table = () => {
     mutate(id);
   };
   return (
-    <TableStyled ref={scroller}>
+    <StyledTable ref={scroller}>
       <TableElementStyled>
         <thead>
           <tr>
@@ -117,7 +113,7 @@ const Table = () => {
           )}
         </tbody>
       </TableElementStyled>
-    </TableStyled>
+    </StyledTable>
   );
 };
 

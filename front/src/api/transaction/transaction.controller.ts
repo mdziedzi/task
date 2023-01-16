@@ -40,7 +40,6 @@ export const useCreateTransaction = () => {
 };
 
 export const useGetTransactionsInfinite = (searchValue: string) => {
-  console.log("searchval", searchValue);
   return useInfiniteQuery({
     queryKey: [TRANSACTIONS_PAGINATED_CACHE_KEY, searchValue],
     queryFn: ({ pageParam = 1 }) =>

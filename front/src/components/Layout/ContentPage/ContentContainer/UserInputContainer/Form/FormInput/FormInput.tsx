@@ -1,12 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { UseFormRegisterReturn } from "react-hook-form";
-
-const FormInputStyled = styled.div`
-  margin-top: 1rem;
-  display: flex;
-  flex-direction: column;
-`;
+import { StyledFormInput } from "./FormInput.styled";
 
 const InputStyled = styled.input``;
 
@@ -32,11 +27,11 @@ const FormInput = ({
   fieldAttributes,
 }: FormInputProps) => {
   return (
-    <FormInputStyled>
+    <StyledFormInput>
       <label htmlFor={id}>{label}</label>
       <InputStyled type={type} placeholder={placeholder} {...fieldAttributes} />
       <ValidationErrorStyled>{errorMsg}</ValidationErrorStyled>
-    </FormInputStyled>
+    </StyledFormInput>
   );
 };
 

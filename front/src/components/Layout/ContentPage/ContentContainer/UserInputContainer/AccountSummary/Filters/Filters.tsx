@@ -1,12 +1,7 @@
 import React, { useContext } from "react";
-import styled from "styled-components";
-import TransactionFilterContext from "../contexts/TransactionFilterContext";
+import TransactionFilterContext from "../../../../../../../contexts/TransactionFilterContext";
+import { StyledFilters } from "./Filters.styled";
 
-const FiltersStyled = styled.div`
-  flex: 1;
-  display: flex;
-  align-items: flex-end;
-`;
 const Filters = () => {
   const { setSearchValue } = useContext(TransactionFilterContext);
 
@@ -15,10 +10,10 @@ const Filters = () => {
   };
 
   return (
-    <FiltersStyled>
+    <StyledFilters>
       <label>Filter Beneficiaries: </label>
       <input onChange={handleFiltering} />
-    </FiltersStyled>
+    </StyledFilters>
   );
 };
 

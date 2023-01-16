@@ -1,20 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-
-const NavbarStyled = styled.nav`
-  height: ${(props) => props.theme.spacing.l};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
+import { StyledNavBar } from "./NavBar.styled";
 
 const AppLogo = styled.h1``;
 
 function Navbar() {
   return (
-    <NavbarStyled>
+    <StyledNavBar>
       <AppLogo>Task</AppLogo>
-    </NavbarStyled>
+    </StyledNavBar>
   );
 }
 

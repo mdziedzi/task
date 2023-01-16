@@ -1,20 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-
-const FooterStyled = styled.div`
-  height: ${(props) => props.theme.spacing.l};
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
+import { StyledFooter } from "./Footer.styled";
 
 const Copyrights = styled.p``;
 
 function Footer() {
   return (
-    <FooterStyled>
+    <StyledFooter>
       <Copyrights>Copyrights: Marcin Dziedzic</Copyrights>
-    </FooterStyled>
+    </StyledFooter>
   );
 }
 

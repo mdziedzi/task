@@ -1,17 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
-import { useCreateTransaction } from "../api/transaction/transaction.controller";
-import FormInput from "./FormInput";
-import TransactionDto from "../../_types/_dto/Transaction.dto";
-
-const FromStyled = styled.form`
-  border: 1px solid #000;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-`;
+import { useCreateTransaction } from "../../../../../../api/transaction/transaction.controller";
+import FormInput from "./FormInput/FormInput";
+import TransactionDto from "../../../../../../../_types/_dto/Transaction.dto";
+import { StyledForm } from "./Form.styled";
 
 const FormSubmit = styled.input`
   margin-top: 1rem;
@@ -53,7 +46,7 @@ const Form = () => {
   };
 
   return (
-    <FromStyled onSubmit={handleSubmit(onSubmit)}>
+    <StyledForm onSubmit={handleSubmit(onSubmit)}>
       <FormInput
         id={"amount"}
         label={"Amount:"}
@@ -101,7 +94,7 @@ const Form = () => {
       <FormSubmit type={"submit"} />
       {showSuccessMsg && <div>New transaction created successfully</div>}
       {showFailureMsg && <div>Something went wrong</div>}
-    </FromStyled>
+    </StyledForm>
   );
 };
 

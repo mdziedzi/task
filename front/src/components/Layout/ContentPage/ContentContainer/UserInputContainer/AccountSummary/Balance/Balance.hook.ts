@@ -1,4 +1,4 @@
-import { useGetTransactions } from "../../api/transaction/transaction.controller";
+import { useGetTransactions } from "../../../../../../../api/transaction/transaction.controller";
 
 export const useBalanceHook = () => {
   const { data: transactions } = useGetTransactions();

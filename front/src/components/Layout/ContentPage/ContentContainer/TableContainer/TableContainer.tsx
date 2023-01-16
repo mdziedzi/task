@@ -1,11 +1,11 @@
 import React from "react";
-import Table from "./Table/Table";
+import TransactionsTable from "./TransactionsTable/TransactionsTable";
 import { StyledTableContainer } from "./TableContainer.styled";
 
 const TableContainer = () => {
   return (
     <StyledTableContainer>
-      <Table />
+      <TransactionsTable />
     </StyledTableContainer>
   );
 };

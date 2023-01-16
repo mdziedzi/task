@@ -14,13 +14,6 @@ const ContentContainer = () => {
       >
         <UserInputContainer />
         <TableContainer />
-        {/*<StyledUserInputContainer>*/}
-        {/*  <AccountSummary />*/}
-        {/*  <Form />*/}
-        {/*</StyledUserInputContainer>*/}
-        {/*<StyledTableContainer>*/}
-        {/*  <Table />*/}
-        {/*</StyledTableContainer>*/}
       </TransactionFilterContext.Provider>
     </StyledContentContainer>
   );

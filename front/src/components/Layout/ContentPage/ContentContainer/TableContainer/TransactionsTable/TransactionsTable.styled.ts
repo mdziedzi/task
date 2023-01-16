@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledTable = styled.div`
+export const StyledTransactionsTable = styled.div`
   //max-height: 400px;
   //overflow: scroll;
 `;

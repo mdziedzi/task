@@ -1,19 +1,16 @@
 import React, { useCallback, useContext, useRef } from "react";
 import styled from "styled-components";
-import {
-  useDeleteTransaction,
-  useGetTransactionsInfinite,
-} from "../../../../../../api/transaction/transaction.controller";
+import { useGetTransactionsInfinite } from "../../../../../../api/transaction/transaction.controller";
 import TransactionFilterContext from "../../../../../../contexts/TransactionFilterContext";
-import { StyledTable } from "./Table.styled";
+import { StyledTransactionsTable } from "./TransactionsTable.styled";
+import Transaction from "./Transaction/Transaction";
 
 const TableElementStyled = styled.table`
   border-collapse: separate;
   border-spacing: 1em 4em;
 `;
 
-const Table = () => {
-  const scroller = useRef<HTMLDivElement>(null);
+const TransactionsTable = () => {
   const { searchValue } = useContext(TransactionFilterContext);
 
   const {
@@ -23,8 +20,6 @@ const Table = () => {
     isLoading,
     error,
   } = useGetTransactionsInfinite(searchValue);
-
-  const { mutate } = useDeleteTransaction();
 
   const observer = useRef<IntersectionObserver>();
   const lastElementRef = useCallback(
@@ -48,11 +43,8 @@ const Table = () => {
   if (error) return <div>{`An error has occurred: ${error}`}</div>;
   if (isLoading || !fetchedData) return <div>Loading...</div>;
 
-  const handleTransactionDelete = (id: number) => {
-    mutate(id);
-  };
   return (
-    <StyledTable ref={scroller}>
+    <StyledTransactionsTable>
       <TableElementStyled>
         <thead>
         <tr>
@@ -68,21 +60,11 @@ const Table = () => {
         {fetchedData?.pages[0]?.length > 0 ? (
           fetchedData.pages.map((page) =>
             page.map((item, idx) => (
-              <tr
+              <Transaction
                 key={item.id}
-                ref={page.length === idx + 1 ? lastElementRef : null}
-              >
-                <td>{item?.amount}</td>
-                <td>{item?.address}</td>
-                <td>{item?.account}</td>
-                <td>{item?.description}</td>
-                <td>{item?.beneficiary}</td>
-                <td>
-                  <button onClick={() => handleTransactionDelete(item.id)}>
-                    Delete
-                  </button>
-                </td>
-              </tr>
+                refForward={page.length === idx + 1 ? lastElementRef : null}
+                transaction={item}
+              />
             ))
           )
         ) : (
@@ -90,8 +72,8 @@ const Table = () => {
         )}
         </tbody>
       </TableElementStyled>
-    </StyledTable>
+    </StyledTransactionsTable>
   );
 };
 
-export default Table;
+export default TransactionsTable;

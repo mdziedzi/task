@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import TransactionFilterContext from "../../../../contexts/TransactionFilterContext";
+import TransactionFilterContext from "../../../contexts/TransactionFilterContext";
 import { StyledContentContainer } from "./ContentContainer.styled";
-import UserInputContainer from "./UserInputContainer/UserInputContainer";
-import TableContainer from "./TableContainer/TableContainer";
+import HeadSection from "./HeadSection/HeadSection";
+import TransactionsSection from "./TransactionsSection/TransactionsSection";
 
 const ContentContainer = () => {
   const [searchValue, setSearchValue] = useState<string>("");
@@ -12,8 +12,8 @@ const ContentContainer = () => {
       <TransactionFilterContext.Provider
         value={{ searchValue, setSearchValue }}
       >
-        <UserInputContainer />
-        <TableContainer />
+        <HeadSection />
+        <TransactionsSection />
       </TransactionFilterContext.Provider>
     </StyledContentContainer>
   );

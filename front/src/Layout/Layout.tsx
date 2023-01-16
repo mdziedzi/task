@@ -1,8 +1,8 @@
 import React from "react";
 import { StyledLayout } from "./Layout.styled";
-import Navbar from "./NavBar/Navbar";
-import ContentPage from "./ContentPage/ContentPage";
-import Footer from "./Footer/Footer";
+import Navbar from "../components/NavBar/Navbar";
+import ContentPage from "../pages/ContentPage/ContentPage";
+import Footer from "../components/Footer/Footer";
 
 const Layout = () => {
   return (

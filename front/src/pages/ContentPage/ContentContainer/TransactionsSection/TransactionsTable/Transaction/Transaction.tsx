@@ -1,6 +1,6 @@
 import React from "react";
-import TransactionDto from "../../../../../../../../_types/_dto/Transaction.dto";
-import { useDeleteTransaction } from "../../../../../../../api/transaction/transaction.controller";
+import TransactionDto from "../../../../../../../_types/_dto/Transaction.dto";
+import { useDeleteTransaction } from "../../../../../../api/transaction/transaction.controller";
 import { StyledTransaction } from "./Transaction.styled";
 
 interface TransactionProps {

@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
-import { useCreateTransaction } from "../../../../../../api/transaction/transaction.controller";
-import FormInput from "./FormInput/FormInput";
-import TransactionDto from "../../../../../../../_types/_dto/Transaction.dto";
-import { StyledForm } from "./Form.styled";
+import { useCreateTransaction } from "../../../../../api/transaction/transaction.controller";
+import FormInput from "../../../../../components/FormInput/FormInput";
+import TransactionDto from "../../../../../../_types/_dto/Transaction.dto";
+import { StyledNewTransactionForm } from "./NewTransactionForm.styled";
 
 const FormSubmit = styled.input`
   margin-top: 1rem;
 `;
 
-const Form = () => {
+const NewTransactionForm = () => {
   const {
     handleSubmit,
     register,
@@ -46,7 +46,7 @@ const Form = () => {
   };
 
   return (
-    <StyledForm onSubmit={handleSubmit(onSubmit)}>
+    <StyledNewTransactionForm onSubmit={handleSubmit(onSubmit)}>
       <FormInput
         id={"amount"}
         label={"Amount:"}
@@ -94,8 +94,8 @@ const Form = () => {
       <FormSubmit type={"submit"} />
       {showSuccessMsg && <div>New transaction created successfully</div>}
       {showFailureMsg && <div>Something went wrong</div>}
-    </StyledForm>
+    </StyledNewTransactionForm>
   );
 };
 
-export default Form;
+export default NewTransactionForm;

@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useRef } from "react";
 import styled from "styled-components";
-import { useGetTransactionsInfinite } from "../../../../../../api/transaction/transaction.controller";
-import TransactionFilterContext from "../../../../../../contexts/TransactionFilterContext";
+import { useGetTransactionsInfinite } from "../../../../../api/transaction/transaction.controller";
+import TransactionFilterContext from "../../../../../contexts/TransactionFilterContext";
 import { StyledTransactionsTable } from "./TransactionsTable.styled";
 import Transaction from "./Transaction/Transaction";
 
@@ -47,29 +47,29 @@ const TransactionsTable = () => {
     <StyledTransactionsTable>
       <TableElementStyled>
         <thead>
-        <tr>
-          <th>Amount</th>
-          <th>Address</th>
-          <th>Account</th>
-          <th>Description</th>
-          <th>Beneficiary</th>
-          <th>Options</th>
-        </tr>
+          <tr>
+            <th>Amount</th>
+            <th>Address</th>
+            <th>Account</th>
+            <th>Description</th>
+            <th>Beneficiary</th>
+            <th>Options</th>
+          </tr>
         </thead>
         <tbody>
-        {fetchedData?.pages[0]?.length > 0 ? (
-          fetchedData.pages.map((page) =>
-            page.map((item, idx) => (
-              <Transaction
-                key={item.id}
-                refForward={page.length === idx + 1 ? lastElementRef : null}
-                transaction={item}
-              />
-            ))
-          )
-        ) : (
-          <div>No results found</div>
-        )}
+          {fetchedData?.pages[0]?.length > 0 ? (
+            fetchedData.pages.map((page) =>
+              page.map((item, idx) => (
+                <Transaction
+                  key={item.id}
+                  refForward={page.length === idx + 1 ? lastElementRef : null}
+                  transaction={item}
+                />
+              ))
+            )
+          ) : (
+            <div>No results found</div>
+          )}
         </tbody>
       </TableElementStyled>
     </StyledTransactionsTable>

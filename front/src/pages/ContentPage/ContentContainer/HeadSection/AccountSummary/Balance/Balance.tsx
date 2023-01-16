@@ -1,5 +1,5 @@
 import React from "react";
-import { getMonetaryValue } from "../../../../../../../utils/monetary.util";
+import { getMonetaryValue } from "../../../../../../utils/monetary.util";
 import { StyledBalance } from "./Balance.styled";
 import { useBalanceHook } from "./Balance.hook";
 

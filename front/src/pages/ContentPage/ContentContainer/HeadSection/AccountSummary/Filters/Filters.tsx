@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import TransactionFilterContext from "../../../../../../../contexts/TransactionFilterContext";
+import TransactionFilterContext from "../../../../../../contexts/TransactionFilterContext";
 import { StyledFilters } from "./Filters.styled";
 import { useDebouncedCallback } from "use-debounce";
 

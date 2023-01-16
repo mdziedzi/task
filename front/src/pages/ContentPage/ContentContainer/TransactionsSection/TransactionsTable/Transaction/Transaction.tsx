@@ -1,7 +1,8 @@
 import React from "react";
 import TransactionDto from "../../../../../../../_types/_dto/Transaction.dto";
 import { useDeleteTransaction } from "../../../../../../api/transaction/transaction.controller";
-import { StyledTransaction } from "./Transaction.styled";
+import { StyledCell, StyledTransaction } from "./Transaction.styled";
+import { getMonetaryValue } from "../../../../../../utils/monetary.util";
 
 interface TransactionProps {
   transaction: TransactionDto;
@@ -17,7 +18,7 @@ const Transaction = ({ transaction, refForward }: TransactionProps) => {
 
   return (
     <StyledTransaction ref={refForward}>
-      <td>{transaction?.amount}</td>
+      <StyledCell>{getMonetaryValue(transaction?.amount)}</StyledCell>
       <td>{transaction?.address}</td>
       <td>{transaction?.account}</td>
       <td>{transaction?.description}</td>

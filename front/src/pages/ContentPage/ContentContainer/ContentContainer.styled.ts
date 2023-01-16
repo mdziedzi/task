@@ -5,5 +5,4 @@ export const StyledContentContainer = styled.div`
   margin-right: auto;
   margin-left: auto;
   height: 100%;
-  border: 1px solid #000;
 `;

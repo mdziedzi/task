@@ -1,6 +1,4 @@
 import styled from "styled-components";
+import { StyledCard } from "../../../../theme/themeComponents";
 
-export const StyledTransactionsSection = styled.div`
-  background-color: #ddd;
-  border: 1px solid #000;
-`;
+export const StyledTransactionsSection = styled(StyledCard)``;

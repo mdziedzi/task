@@ -15,7 +15,7 @@ const Filters = () => {
 
   return (
     <StyledFilters>
-      <label>Filter Beneficiaries: </label>
+      <label>{"Filter Beneficiaries: "}</label>
       <input onChange={handleFiltering} />
     </StyledFilters>
   );

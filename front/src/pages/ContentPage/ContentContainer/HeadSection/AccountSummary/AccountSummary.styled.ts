@@ -1,7 +1,7 @@
 import styled from "styled-components";
+import { StyledCard } from "../../../../../theme/themeComponents";
 
-export const StyledAccountSummary = styled.div`
-  border: 1px solid #000;
+export const StyledAccountSummary = styled(StyledCard)`
   flex: 1;
   display: flex;
   flex-direction: column;

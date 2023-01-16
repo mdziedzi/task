@@ -1,6 +1,6 @@
 import React from "react";
 import { getMonetaryValue } from "../../../../../../utils/monetary.util";
-import { StyledBalance } from "./Balance.styled";
+import { StyledBalance, StyledBalanceValue } from "./Balance.styled";
 import { useBalanceHook } from "./Balance.hook";
 
 const Balance = () => {
@@ -8,8 +8,10 @@ const Balance = () => {
 
   return (
     <StyledBalance>
-      Balance:
-      {balance && <span>{getMonetaryValue(balance)}</span>}
+      {"Balance: "}
+      {balance && (
+        <StyledBalanceValue>{getMonetaryValue(balance)}</StyledBalanceValue>
+      )}
     </StyledBalance>
   );
 };

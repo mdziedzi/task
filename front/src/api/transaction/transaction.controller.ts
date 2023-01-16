@@ -35,7 +35,7 @@ export const useCreateTransaction = () => {
     mutationKey: TRANSACTIONS_CACHE_KEY,
     mutationFn: (transaction: TransactionDto) =>
       api.createTransaction(transaction),
-    onSuccess: () => queryClient.invalidateQueries(TRANSACTIONS_CACHE_KEY),
+    onSuccess: () => queryClient.invalidateQueries(),
   });
 };
 

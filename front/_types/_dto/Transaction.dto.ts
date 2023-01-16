@@ -4,6 +4,6 @@ export default interface TransactionDto {
   beneficiary: string;
   account: string;
   address: string;
-  date: Date;
+  date: string;
   description: string;
 }

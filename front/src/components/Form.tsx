@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
 import { useCreateTransaction } from "../api/transaction/transaction.controller";
@@ -25,9 +25,29 @@ const Form = () => {
     formState: { errors: formErrors },
   } = useForm<TransactionDto>();
 
-  const { mutate } = useCreateTransaction();
+  const [showSuccessMsg, setShowSuccessMsg] = useState(false);
+  const [showFailureMsg, setShowFailureMsg] = useState(false);
+
+  const { mutate, isSuccess, isError } = useCreateTransaction();
+
+  useEffect(() => {
+    if (isSuccess) setShowSuccessMsg(true);
+    const timer = setTimeout(() => {
+      setShowSuccessMsg(false);
+    }, 5000);
+    return () => clearTimeout(timer);
+  }, [isSuccess]);
+
+  useEffect(() => {
+    if (isError) setShowFailureMsg(true);
+    const timer = setTimeout(() => {
+      setShowFailureMsg(false);
+    }, 5000);
+    return () => clearTimeout(timer);
+  }, [isError]);
 
   const onSubmit = (data: TransactionDto) => {
+    data.date = new Date().toISOString();
     mutate(data);
     resetForm();
   };
@@ -41,11 +61,10 @@ const Form = () => {
         placeholder={"Provide amount"}
         errorMsg={formErrors?.amount?.message?.toString()}
         fieldAttributes={register("amount", {
-          required: "To pole jest wymagane",
+          required: "This field is required",
           valueAsNumber: true,
           validate: {
-            positive: (value) =>
-              value > 0 || "Kwota musi być liczą wiekszą niż 0",
+            positive: (value) => value > 0 || "The amount must be positive",
           },
         })}
       />
@@ -56,7 +75,7 @@ const Form = () => {
         placeholder={"Provide account number"}
         errorMsg={formErrors?.account?.message?.toString()}
         fieldAttributes={register("account", {
-          required: "To pole jest wymagane",
+          required: "This field is required",
         })}
       />
       <FormInput
@@ -66,7 +85,7 @@ const Form = () => {
         placeholder={"Provide address"}
         errorMsg={formErrors?.address?.message?.toString()}
         fieldAttributes={register("address", {
-          required: "To pole jest wymagane",
+          required: "This field is required",
         })}
       />
       <FormInput
@@ -76,10 +95,12 @@ const Form = () => {
         placeholder={"Provide description"}
         errorMsg={formErrors?.description?.message?.toString()}
         fieldAttributes={register("description", {
-          required: "To pole jest wymagane",
+          required: "This field is required",
         })}
       />
       <FormSubmit type={"submit"} />
+      {showSuccessMsg && <div>New transaction created successfully</div>}
+      {showFailureMsg && <div>Something went wrong</div>}
     </FromStyled>
   );
 };

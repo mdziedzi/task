@@ -13,7 +13,7 @@ const TableStyled = styled.div`
 
 const TableElementStyled = styled.table`
   border-collapse: separate;
-  border-spacing: 0 4em;
+  border-spacing: 1em 4em;
 `;
 
 const Table = () => {
@@ -90,6 +90,8 @@ const Table = () => {
         <thead>
           <tr>
             <th>Amount</th>
+            <th>Address</th>
+            <th>Account</th>
             <th>Description</th>
             <th>Beneficiary</th>
             <th>Options</th>
@@ -101,6 +103,8 @@ const Table = () => {
               page.map((item) => (
                 <tr key={item.id}>
                   <td>{item?.amount}</td>
+                  <td>{item?.address}</td>
+                  <td>{item?.account}</td>
                   <td>{item?.description}</td>
                   <td>{item?.beneficiary}</td>
                   <td>

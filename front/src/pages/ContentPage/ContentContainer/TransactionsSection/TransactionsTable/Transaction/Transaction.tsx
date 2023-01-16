@@ -1,7 +1,11 @@
 import React from "react";
 import TransactionDto from "../../../../../../../_types/_dto/Transaction.dto";
 import { useDeleteTransaction } from "../../../../../../api/transaction/transaction.controller";
-import { StyledCell, StyledTransaction } from "./Transaction.styled";
+import {
+  StyledAmountCell,
+  StyledCell,
+  StyledTransaction,
+} from "./Transaction.styled";
 import { getMonetaryValue } from "../../../../../../utils/monetary.util";
 
 interface TransactionProps {
@@ -18,16 +22,18 @@ const Transaction = ({ transaction, refForward }: TransactionProps) => {
 
   return (
     <StyledTransaction ref={refForward}>
-      <StyledCell>{getMonetaryValue(transaction?.amount)}</StyledCell>
-      <td>{transaction?.address}</td>
-      <td>{transaction?.account}</td>
-      <td>{transaction?.description}</td>
-      <td>{transaction?.beneficiary}</td>
-      <td>
+      <StyledAmountCell>
+        {getMonetaryValue(transaction?.amount)}
+      </StyledAmountCell>
+      <StyledCell>{transaction?.address}</StyledCell>
+      <StyledCell>{transaction?.account}</StyledCell>
+      <StyledCell>{transaction?.description}</StyledCell>
+      <StyledCell>{transaction?.beneficiary}</StyledCell>
+      <StyledCell>
         <button onClick={() => handleTransactionDelete(transaction.id)}>
           Delete
         </button>
-      </td>
+      </StyledCell>
     </StyledTransaction>
   );
 };

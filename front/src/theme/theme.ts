@@ -20,3 +20,10 @@ export const theme = {
     radius: "5px",
   },
 };
+
+export const size = {
+  mobile: "375px",
+  tablet: "768px",
+  laptop: "1024px",
+  desktop: "2560px",
+};

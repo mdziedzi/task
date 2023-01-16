@@ -1,14 +1,11 @@
 import React, { useCallback, useContext, useRef } from "react";
-import styled from "styled-components";
 import { useGetTransactionsInfinite } from "../../../../../api/transaction/transaction.controller";
 import TransactionFilterContext from "../../../../../contexts/TransactionFilterContext";
-import { StyledTransactionsTable } from "./TransactionsTable.styled";
+import {
+  StyledTransactionsTable,
+  TableElementStyled,
+} from "./TransactionsTable.styled";
 import Transaction from "./Transaction/Transaction";
-
-const TableElementStyled = styled.table`
-  border-collapse: separate;
-  border-spacing: 1em 4em;
-`;
 
 const TransactionsTable = () => {
   const { searchValue } = useContext(TransactionFilterContext);

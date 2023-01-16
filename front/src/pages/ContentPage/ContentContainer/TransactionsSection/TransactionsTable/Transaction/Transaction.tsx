@@ -7,6 +7,8 @@ import {
   StyledTransaction,
 } from "./Transaction.styled";
 import { getMonetaryValue } from "../../../../../../utils/monetary.util";
+import { ClipLoader } from "react-spinners";
+import { theme } from "../../../../../../theme/theme";
 
 interface TransactionProps {
   transaction: TransactionDto;
@@ -14,7 +16,7 @@ interface TransactionProps {
 }
 
 const Transaction = ({ transaction, refForward }: TransactionProps) => {
-  const { mutate } = useDeleteTransaction();
+  const { mutate, isLoading } = useDeleteTransaction();
 
   const handleTransactionDelete = (id: number) => {
     mutate(id);
@@ -30,9 +32,13 @@ const Transaction = ({ transaction, refForward }: TransactionProps) => {
       <StyledCell>{transaction?.description}</StyledCell>
       <StyledCell>{transaction?.beneficiary}</StyledCell>
       <StyledCell>
-        <button onClick={() => handleTransactionDelete(transaction.id)}>
-          Delete
-        </button>
+        {isLoading ? (
+          <ClipLoader color={theme.color.primary} loading={isLoading} />
+        ) : (
+          <button onClick={() => handleTransactionDelete(transaction.id)}>
+            Delete
+          </button>
+        )}
       </StyledCell>
     </StyledTransaction>
   );

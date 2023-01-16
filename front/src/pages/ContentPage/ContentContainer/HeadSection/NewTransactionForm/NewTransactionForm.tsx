@@ -65,7 +65,7 @@ const NewTransactionForm = () => {
         <FormInput
           id={"account"}
           label={"Account number:"}
-          type={"number"}
+          type={"text"}
           placeholder={"Provide account number"}
           errorMsg={formErrors?.account?.message?.toString()}
           fieldAttributes={register("account", {

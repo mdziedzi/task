@@ -1,13 +1,17 @@
 import React, { useContext } from "react";
 import TransactionFilterContext from "../../../../../../../contexts/TransactionFilterContext";
 import { StyledFilters } from "./Filters.styled";
+import { useDebouncedCallback } from "use-debounce";
 
 const Filters = () => {
   const { setSearchValue } = useContext(TransactionFilterContext);
 
-  const handleFiltering = (e: React.FormEvent<HTMLInputElement>) => {
-    setSearchValue(e.currentTarget.value);
-  };
+  const handleFiltering = useDebouncedCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setSearchValue(e.target.value);
+    },
+    500
+  );
 
   return (
     <StyledFilters>

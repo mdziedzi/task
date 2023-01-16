@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
 import { useCreateTransaction } from "../../../../../api/transaction/transaction.controller";
-import FormInput from "../../../../../components/FormInput/FormInput";
+import FormInput from "./FormInput/FormInput";
 import TransactionDto from "../../../../../../_types/_dto/Transaction.dto";
 import { StyledNewTransactionForm } from "./NewTransactionForm.styled";
 

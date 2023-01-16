@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { FieldValues, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { useCreateTransaction } from "../api/transaction/transaction.controller";
 import FormInput from "./FormInput";
 import TransactionDto from "../../_types/_dto/Transaction.dto";
@@ -23,12 +23,12 @@ const Form = () => {
     register,
     reset: resetForm,
     formState: { errors: formErrors },
-  } = useForm();
+  } = useForm<TransactionDto>();
 
   const { mutate } = useCreateTransaction();
 
-  const onSubmit = (data: FieldValues) => {
-    mutate(data as TransactionDto);
+  const onSubmit = (data: TransactionDto) => {
+    mutate(data);
     resetForm();
   };
 
@@ -50,12 +50,12 @@ const Form = () => {
         })}
       />
       <FormInput
-        id={"accNum"}
+        id={"account"}
         label={"Account number:"}
         type={"number"}
         placeholder={"Provide account number"}
-        errorMsg={formErrors?.accNum?.message?.toString()}
-        fieldAttributes={register("accNum", {
+        errorMsg={formErrors?.account?.message?.toString()}
+        fieldAttributes={register("account", {
           required: "To pole jest wymagane",
         })}
       />

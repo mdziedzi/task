@@ -1,5 +1,6 @@
 import axios from "axios";
 import TransactionDto from "../../../_types/_dto/Transaction.dto";
+import PaginationParamsInterface from "../../../_types/pagination.interface";
 
 enum Endpoints {
   TRANSACTIONS = "/transactions",
@@ -19,3 +20,11 @@ export const createTransaction = (data: TransactionDto) =>
 
 export const deleteTransaction = (id: number) =>
   api.delete<TransactionDto[]>(Endpoints.TRANSACTIONS + `/${id}`);
+
+export const getTransactionsPaginated = ({
+  page,
+  limit,
+}: PaginationParamsInterface) => {
+  const url = Endpoints.TRANSACTIONS + `?_page=${page}&_limit=${limit}`;
+  return api.get<TransactionDto[]>(url).then((response) => response.data);
+};

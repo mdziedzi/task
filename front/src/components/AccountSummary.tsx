@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Balance from "./Balance";
+import Balance from "./Balance/Balance";
 import Filters from "./Filters";
 
 const AccountSummaryStyled = styled.div`

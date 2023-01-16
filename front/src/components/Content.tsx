@@ -28,7 +28,7 @@ const TableContainer = styled.div`
   border: 1px solid #000;
 `;
 
-function Content() {
+const Content = () => {
   const [searchValue, setSearchValue] = useState<string>("");
 
   return (
@@ -48,6 +48,6 @@ function Content() {
       </ContentContainerStyled>
     </ContentStyled>
   );
-}
+};
 
 export default Content;

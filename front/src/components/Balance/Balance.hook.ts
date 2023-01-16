@@ -1,6 +1,6 @@
-import { useGetTransactions } from "../api/transaction/transaction.controller";
+import { useGetTransactions } from "../../api/transaction/transaction.controller";
 
-export const useBalance = () => {
+export const useBalanceHook = () => {
   const { data: transactions } = useGetTransactions();
   return transactions?.reduce((sum, transaction) => {
     return sum + transaction.amount;
